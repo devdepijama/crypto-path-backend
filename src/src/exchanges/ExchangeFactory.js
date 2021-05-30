@@ -14,10 +14,14 @@ module.exports = class ExchangeFactory {
         return this.exchangesMap[exchangeName]
     }
 
+    getAll() {
+        return this.exchangesMap.values
+    }
+
     // Private method
     _buildExchangeMap() {
         const exchanges = [
-            new Foxbit('wss://api.foxbit.com.br'),
+            //new Foxbit('wss://api.foxbit.com.br'),
             new BitcoinTrade('https://api.bitcointrade.com.br/v3'),
             new Bitstamp('wss://ws.bitstamp.net'),
             new Coinbase('https://api.coinbase.com/v2')

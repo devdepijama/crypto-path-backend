@@ -1,0 +1,14 @@
+{
+  "name": "crypto-path",
+  "version": "1.0.0",
+  "description": "A tool for finding the best way to exchange FIAT coins through crypto tunnels",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ws": "^7.4.6"
+  }
+}

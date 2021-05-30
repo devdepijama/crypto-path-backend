@@ -2,7 +2,7 @@ const Market = require('../../model/Market')
 
 module.exports = class BitcoinTrade {
     constructor(apiUrl) {
-        this.markets = this._getMarkets()
+        this.apiUrl = apiUrl
     }
 
     getName() {

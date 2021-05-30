@@ -1,11 +1,19 @@
-const http = require('http')
+const Market = require('../../model/Market')
 
 module.exports = class BitstampHttp {
     constructor(apiUrl) {
         this.apiUrl = apiUrl
     }
 
-    getMarket() {
-        
+    getMarkets() {
+        return [
+            new Market('BTC', 'EUR'),
+            new Market('BTC', 'USD')
+        ]
+    }
+
+    // Private
+    _get(path, headers) {
+
     }
 }

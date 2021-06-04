@@ -7,6 +7,10 @@ module.exports = class Coinbase {
         return 'coinbase'
     }
 
+    async getMarkets() {
+        return []
+    }
+
     // Private method
     _setup(apiUrl) {
 

@@ -1,23 +1,28 @@
 const Market = require('../../model/Market')
+const BitcointradeHttp = require('./BitcoinTradeHttp')
 
 module.exports = class BitcoinTrade {
     constructor(apiUrl) {
-        this.apiUrl = apiUrl
+        this._httpApi = new BitcointradeHttp(apiUrl)
     }
 
     getName() {
         return 'bitcointrade'
     }
 
-    getMarkets() {
+    async getMarkets() {
         return [
-            new Market('BTC', 'BRL'),
-            new Market('ETH', 'BRL'),
-            new Market('LTC', 'BRL'),
-            new Market('BCH', 'BRL'),
-            new Market('XRP', 'BRL'),
-            new Market('EOS', 'BRL'),
-            new Market('DAI', 'BRL'),
+            new Market('BRL', 'BTC'),
+            new Market('BRL', 'ETH'),
+            new Market('BRL', 'LTC'),
+            new Market('BRL', 'BCH'),
+            new Market('BRL', 'XRP'),
+            new Market('BRL', 'EOS'),
+            new Market('BRL', 'DAI'),
         ]
+    }
+
+    async getTicker(market) {
+        return this._httpApi.getTicker(market)
     }
 }

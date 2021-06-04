@@ -3,7 +3,7 @@ const WebSocket = require('ws');
 module.exports = class Foxbit {
     constructor(apiUrl) {
         this.state = {
-            markets: {}
+            markets: []
         }
         this._setup(apiUrl);
     }
@@ -12,7 +12,7 @@ module.exports = class Foxbit {
         return 'foxbit'
     }
 
-    getMarkets() {
+    async getMarkets() {
         return this.state.markets
     }
 

@@ -3,4 +3,16 @@ module.exports = class Operation {
         this.exchange = exchange
         this.market = market
     }
+
+    getExchange() {
+        return this.exchange
+    }
+
+    getMarket() {
+        return this.market
+    }
+
+    toString() {
+        return JSON.stringify(this)
+    }
 }

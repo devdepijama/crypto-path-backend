@@ -18,7 +18,15 @@ module.exports = class BitstampHttp {
             })
         }
 
-        return axios.get(this.apiUrl + '/trading-pairs-info')
+        return axios.get(`${this.apiUrl}/trading-pairs-info`)
                     .then(response => _parseResponse(response))
+    }
+
+    async getTicker(market) {
+        const pair = market.getLeft().toLowerCase() + market.getRight().toLowerCase()
+        const url = `${this.apiUrl}/ticker/${pair}`
+        console.log("Requesting", url)
+        return axios.get(url)
+                    .then(response => parseFloat(response.data.last))
     }
 }

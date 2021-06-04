@@ -10,12 +10,11 @@ module.exports = class ExchangeFactory {
     }
 
     getByName(exchangeName) {
-        console.log("Exchange map: ", JSON.stringify(this.exchangesMap))
-        return this.exchangesMap[exchangeName]
+        return this.exchangesMap.get(exchangeName)
     }
 
     getAll() {
-        return this.exchangesMap.values
+        return Array.from(this.exchangesMap.values())
     }
 
     // Private method
@@ -27,9 +26,11 @@ module.exports = class ExchangeFactory {
             new Coinbase('https://api.coinbase.com/v2')
         ]
 
-        return exchanges.reduce((map, item) => {
+        const result = exchanges.reduce((map, item) => {
             map[item.getName()] = item
             return map
         }, {})
+
+        return new Map(Object.entries(result))
     }
 }

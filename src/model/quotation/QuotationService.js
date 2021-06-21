@@ -55,8 +55,6 @@ module.exports = class QuotationService {
                 .map(operation => this._getTickerQuotation(operation))
         )
 
-        console.log(`${targetTicker} / ${originTicker}`)
-
         return targetTicker / originTicker
     }
 

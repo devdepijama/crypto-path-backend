@@ -2,11 +2,12 @@ const express = require('express')
 const QuotationService = require('./model/quotation/QuotationService')
 const ExchangeFactory = require('./exchanges/ExchangeFactory')
 
-var app = express()
+const app = express()
 const quotationService = new QuotationService(new ExchangeFactory())
 
-app.listen(3000, () => {
- console.log("Server running on port 3000");
+const port = 3001
+app.listen(port, () => {
+ console.log(`Server running on port ${port}`);
 });
 
 app.get("/fiat/:coinFrom/:coinTo", (request, response) => {
@@ -16,7 +17,7 @@ app.get("/fiat/:coinFrom/:coinTo", (request, response) => {
     quotationService.getQuotation(coinFrom, coinTo)
                     .then(paths => {
                         response.send(
-                            paths.sort((a, b) => a.quotation.compare(b.quotation))
+                            paths.sort((a, b) => a.quotation - b.quotation)
                         )
                     })
 });

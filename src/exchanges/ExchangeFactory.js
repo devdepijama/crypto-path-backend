@@ -2,6 +2,7 @@ const Foxbit = require('./foxbit/Foxbit')
 const BitcoinTrade = require('./bitcointrade/BitcoinTrade')
 const Bitstamp = require('./bitstamp/Bitstamp')
 const Coinbase = require('./coinbase/Coinbase')
+const Kraken = require('./kraken/Kraken')
 
 module.exports = class ExchangeFactory {
 
@@ -23,7 +24,8 @@ module.exports = class ExchangeFactory {
             //new Foxbit('wss://api.foxbit.com.br'),
             new BitcoinTrade('https://api.bitcointrade.com.br/v3'),
             new Bitstamp('wss://ws.bitstamp.net'),
-            new Coinbase('https://api.coinbase.com/v2')
+            new Coinbase('https://api.coinbase.com/v2'),
+            new Kraken('https://api.kraken.com/0')
         ]
 
         const result = exchanges.reduce((map, item) => {
